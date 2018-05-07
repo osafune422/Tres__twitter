@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div class="display">
+            <img src="<%= "/header/#{@user.header_name}" %>">
+        </div>
+        <div class="undericon">
+            
+        </div>
+        
+        
+        <div id="wrapper">
+            <% if @current_user.id == @user.id %>
+                <%= link_to("/edit/#{@user.id}") do %>
+                    <a class="link_profile">プロフィールを編集</a>
+                <% end %>
+            <% else %>
+                <% if Follow.find_by(following_id: @current_user.id, followed_id: @user.id) %>
+                    <%= link_to("/follow/destroy/#{@user.id}", {method: "post"}) do %>
+                        <a class="link_profile">フォロー解除</a>
+                    <% end %>
+                <% else %>    
+                    <%= link_to("/follow/#{@user.id}",{method: "post"}) do %>
+                        <a class="link_profile">フォローする</a>
+                    <% end %>
+                <% end %>
+            <% end %>
+            
+            <!-- 左カラム　開始 -->
+            <div id="leftColumn_mypage" class="icon">
+                <img src="<%= "/icon/#{@user.icon_name}" %>"><br>
+                <font size="5"><b><%= @user.name %></b></font><br>
+                <font size="2">@<%= @user.login_id %></font><br>
+                <font size="2"><%= @user.profile %></font><br>
+                <font size="2"><%= createuser_time(@user[:created_at]) %></font>
+            </div>
+            <!-- 左カラム　終了 -->
+        
+            <!-- 右カラム　開始 -->
+            <div id="rightColumn_mypage">
+                <% @user.tweets.each do |tweet| %>
+                    <div class="posts-index-item">
+                        <div class="post-left">
+                            <img src="<%= "/icon/#{tweet.user.icon_name}" %>">
+                        </div>
+                        <div class="post-right">
+                            <div class="post-user-name">
+                                <a><%= link_to(tweet.user.name, "/mypage/#{tweet.user.id}/#{tweet.user.login_id}") %></a>
+                                <font size="2">@<%= @user.login_id %></font><br>
+                            </div>
+                            <div class="post-content">
+                                <a><%= link_to(tweet.content, "/show/#{tweet.id}") %></a>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            
+            </div>
+            <!-- 右カラム　終了 -->
+
+        </div>
+    </body>
+
+
