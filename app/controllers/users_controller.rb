@@ -5,8 +5,10 @@ class UsersController < ApplicationController
   
   def mypage
     @user = User.find_by(id: params[:id])
-    @following_count = Follow.where(following_id:@current_user.id).count
-    @followed_count = Follow.where(followed_id:@current_user.id).count
+    @tweet_count = Tweet.where(user_id:@user.id).count
+    @following_count = Follow.where(following_id:@user.id).count
+    @followed_count = Follow.where(followed_id:@user.id).count
+    @like_count = Like.where(userlike_id:@user.id).count
   end
   
   def new

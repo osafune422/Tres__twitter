@@ -9,17 +9,24 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <div class="header">
       <% if @current_user == nil %>
-        <i class="loginbutton"><%= link_to("ログイン", "/login") %></i>
+        <i><%= link_to("ログイン", "/login") %></i>
       <% else %>
-        <%= link_to("/mypage/#{@current_user.id}/#{@current_user.login_id}") do %>
-          <div class="post-left">
-            <img src="<%= "/icon/#{@current_user.icon_name}" %>">
+        <div class="app_header">
+          <div class="app_header_left">
+            <div class="app_header_icon">
+              <span class="fa fa-home"></span><a>ホーム</a>
+            </div>
           </div>
-        <% end %>
-        <%= link_to("/tweets/new") do %>
-          <span class="fa fa-edit write"></span>
-        <% end %>
-        <i class="loginbutton"><%= link_to("ログアウト", "/logout", {method: :post}) %></i>
+          <div class="app_header_right">
+          <%= link_to("/mypage/#{@current_user.id}/#{@current_user.login_id}") do %>
+            <img src="<%= "/icon/#{@current_user.icon_name}" %>">
+          <% end %>
+          <%= link_to("/tweets/new") do %>
+            <span class="fa fa-edit write"></span>
+          <% end %>
+          <i><%= link_to("ログアウト", "/logout", {method: :post}) %></i>
+          </div>
+        </div>
       <% end %>
       
     </div>

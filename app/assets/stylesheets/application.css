@@ -22,8 +22,49 @@
     background-color: white;
     box-shadow: 0px 3px 10px -3px black;
 /*    clear: left*/
-    text-align: center;
     vertical-align: middle;
+    z-index: 10;
+}
+
+.app_header{
+    position:absolute;
+    height:50px;
+    width:1050px;
+    right:0;
+    left:0;
+    margin:0 auto;
+/*    background-color: skyblue;*/
+}
+
+.app_header_icon{
+    padding: 5px 10px;
+    text-align:center;
+}
+
+.app_header_left{
+    float: left;
+}
+
+.app_header_icon{
+    padding:10px 10px;
+    display: flex;
+	align-items: center;
+}
+
+.app_header_icon span{
+    font-size: 25px;
+}
+
+.app_header_icon a{
+    font-size: 15px;
+}
+
+.app_header_right{
+    float:right;
+}
+
+.app_header_right span{
+    font-size: 22px;
 }
 
 .write{
@@ -51,16 +92,25 @@ body{
 }
 
 .button_tweet{
-  font-size: 15px;
-  text-align: center;
-  padding: 5px 5px;
-  background-color: #59b1eb;
-  color: #fff;
-  border-style: none;
-  border-radius: 20px; /*丸み*/
-  /*margin: 5px 0px;*/
+    font-size: 15px;
+    text-align: center;
+    padding: 5px 5px;
+    background-color: #59b1eb;
+    color: #fff;
+    border-style: none;
+    border-radius: 20px; /*丸み*/
+    /*margin: 5px 0px;*/
 }
 .button_tweet:hover{
-  background-color: #1E90FF;
+    background-color: #1E90FF;
 }
 
+.header i{
+    text-decoration: none;
+}
+
+.header img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}

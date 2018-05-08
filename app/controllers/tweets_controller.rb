@@ -2,6 +2,9 @@ class TweetsController < ApplicationController
   before_action :ensure_correct_user, {only:[:destroy_tweet]}      #ユーザーのidが異なる時
   
   def timeline
+    
+    
+    
   end
   
   def show

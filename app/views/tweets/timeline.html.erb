@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="wrapper">
+            
+            
+            <!-- 左カラム　開始 -->
+            <div id="leftColumn" class="icon_show">
+                <img src="<%= "/icon/#{@current_user.icon_name}" %>">
+            </div>
+            <!-- 左カラム　終了 -->
+        
+            <!-- 右カラム　開始 -->
+            <div id="rightColumn">
+                
+                <% @current_user.tls.each do |tl| %>
+                    <div class="posts-index-item">
+                        <div class="post-left">
+                            <img src="<%= "/icon/#{tl.user.icon_name}" %>">
+                        </div>
+                        <div class="post-right">
+                            <div class="post-user-name">
+                                <a><%= link_to(tl.user.name, "/mypage/#{tl.user.id}/#{tl.user.login_id}") %></a>
+                                <font size="2">@<%= tl.user.login_id %></font><br>
+                            </div>
+                            <div class="post-content">
+                                <a><%= link_to(tl.content, "/show/#{tl.id}") %></a>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <!-- 右カラム　終了 -->
+            
+        </div>
+    </body>
+

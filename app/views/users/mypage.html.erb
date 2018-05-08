@@ -8,15 +8,31 @@
             <img src="<%= "/header/#{@user.header_name}" %>">
         </div>
         <div class="undericon">
+            <div class="icon_space">
             
+            </div>
+            <div class="header_icon active">
+                <i>ツイート<br></i>
+                <a><b><%= @tweet_count %></b></a>
+            </div>
+            <div class="header_icon">
+                <i>フォロー<br></i>
+                <a><b><%= @following_count %></b></a>
+            </div>
+            <div class="header_icon">
+                <i>フォロワー<br></i>
+                <a><b><%= @followed_count %></b></a>
+            </div>
+            <div class="header_icon">
+                <i>いいね<br></i>
+                <a><b><%= @like_count %></b></a>
+            </div>
         </div>
         
         
         <div id="wrapper">
             <% if @current_user.id == @user.id %>
-                <%= link_to("/edit/#{@user.id}") do %>
-                    <a class="link_profile">プロフィールを編集</a>
-                <% end %>
+                    <a class="link_profile" href="/edit/<%= @user.id %>">プロフィールを編集</a>
             <% else %>
                 <% if Follow.find_by(following_id: @current_user.id, followed_id: @user.id) %>
                     <%= link_to("/follow/destroy/#{@user.id}", {method: "post"}) do %>

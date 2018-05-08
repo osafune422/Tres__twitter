@@ -11,6 +11,9 @@ class User < ApplicationRecord
         return @tweet.all.order("created_at DESC")
     end
     
-    
+    def self_tweets
+        @tweet=Tweet.where(user_id: self.id) 
+        return @tweet.all.order("created_at DESC")
+    end
 
 end

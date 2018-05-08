@@ -81,6 +81,35 @@ div.display img{
 	align-items: center;
 }
 
+.icon_space{
+    height:50px;
+    width:50%;
+    right:0px;
+//    background-color:skyblue;
+}
+
+.header_icon{
+    padding: 5px 10px;
+    text-align:center;
+}
+
+.header_icon i{
+    font-size:11px;
+    color:gray;
+}
+
+.header_icon a{
+    font-size:18px;
+    color:gray;
+}
+.header_icon a:hover{
+    color:#3ecdc6;
+}
+
+.active a{
+    color:#3ecdc6;
+}
+
 .icon img{
     width: 180px;
     height: 180px;
@@ -91,16 +120,12 @@ div.display img{
     position:relative;
     text-decoration: none;
     top:512px;
-//    left:0;
-//    right:0;
-//    margin:0 auto;
     background: white;
     color:gray;
     padding:5px 10px;/*内側の余白*/
     border-radius: 20px;
     border: solid 1px #808080;
 }
-
 .link_profile:hover{
     background:ghostwhite;
 }
@@ -118,13 +143,12 @@ div.display img{
   color:black;
   text-decoration: none;
 }
-
 .post-user-name a:hover {
   color: #3ecdc6;
   text-decoration: underline;
 }
 
-.post-content a {
+.post-content a{
     text-decoration: none;
     color:black;
     font-size:3;

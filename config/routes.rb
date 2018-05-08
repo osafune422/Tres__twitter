@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'show/:id', to: 'tweets#show'
   get 'tweets/new', to: 'tweets#new_tweet'
   post 'tweet', to: 'tweets#tweet'
+  get 'timeline', to: 'tweets#timeline'
   
   get 'tweets/timeline'
   get 'mypage/:id/:login_id', to:'users#mypage'
