@@ -5,26 +5,28 @@
             
             
             <!-- 左カラム　開始 -->
-            <div id="leftColumn" class="icon_show">
+            <div id="leftColumn_timeline" class="icon_show">
                 <img src="<%= "/icon/#{@current_user.icon_name}" %>">
+                <b><%= link_to(@current_user.name, "/mypage/#{@current_user.id}/#{@current_user.login_id}") %></b><br>
+                <font size="2">@<%= @current_user.login_id %></font><br>
             </div>
             <!-- 左カラム　終了 -->
         
             <!-- 右カラム　開始 -->
             <div id="rightColumn">
                 
-                <% @current_user.tls.each do |tl| %>
+                <% @current_user.self_tweets.each do |self_tweet| %>
                     <div class="posts-index-item">
                         <div class="post-left">
-                            <img src="<%= "/icon/#{tl.user.icon_name}" %>">
+                            <img src="<%= "/icon/#{self_tweet.user.icon_name}" %>">
                         </div>
                         <div class="post-right">
                             <div class="post-user-name">
-                                <a><%= link_to(tl.user.name, "/mypage/#{tl.user.id}/#{tl.user.login_id}") %></a>
-                                <font size="2">@<%= tl.user.login_id %></font><br>
+                                <a><%= link_to(self_tweet.user.name, "/mypage/#{self_tweet.user.id}/#{self_tweet.user.login_id}") %></a>
+                                <font size="2">@<%= self_tweet.user.login_id %></font><br>
                             </div>
                             <div class="post-content">
-                                <a><%= link_to(tl.content, "/show/#{tl.id}") %></a>
+                                <a><%= link_to(self_tweet.content, "/show/#{self_tweet.id}") %></a>
                             </div>
                         </div>
                     </div>

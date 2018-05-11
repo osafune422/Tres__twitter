@@ -36,11 +36,6 @@
 /*    background-color: skyblue;*/
 }
 
-.app_header_icon{
-    padding: 5px 10px;
-    text-align:center;
-}
-
 .app_header_left{
     float: left;
 }
@@ -57,7 +52,13 @@
 
 .app_header_icon a{
     font-size: 15px;
+    color:gray;
+    text-decoration: none;
 }
+.app_header_icon a:hover{
+    color:#3ecdc6;
+}
+
 
 .app_header_right{
     float:right;
@@ -89,6 +90,26 @@ body{
     width: 30%;
     border-radius: 0 0 10px 10px;
     font-size: 14px;
+}
+
+/*.show{
+*    visibility: visible;
+*    animation-name: fadeOut;
+*  animation-duration: 1s;
+*  animation-timing-function: ease;
+*}
+*/
+
+@keyframes fadeOut {
+    0%{
+		opacity: 1;
+	}
+	75%{
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 .button_tweet{

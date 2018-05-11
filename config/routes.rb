@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   post "follow/:user_id" => "follows#follow"
   post "follow/destroy/:user_id" => "follows#destroy"
+  get "following/:id" => "users#following"
+  get "followed/:id" => "follows#followed"
   
   post "like/:tweet_id" => "likes#like"
   post "like/destroy/:tweet_id" => "likes#destroy"

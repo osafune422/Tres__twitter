@@ -100,9 +100,14 @@ div.display img{
 
 .header_icon a{
     font-size:18px;
-    color:gray;
+    font-weight: 700;
 }
-.header_icon a:hover{
+
+.move a{
+    color:gray;
+    text-decoration: none;
+}
+.move a:hover {
     color:#3ecdc6;
 }
 
@@ -219,4 +224,68 @@ textarea{
 .login_form{
     color:gray;
 }
+
+/* following */
+.person{
+    float:left;
+    width: 32%;
+    height: 270px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color:white;
+}
+
+.person-header img{
+    width: 100%;
+    height: 105px;
+}
+
+.person-icon img{
+    position: absolute;
+    top: 65px;
+    margin-left: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: solid 3px white;
+}
+
+.person-contents{
+    position:relative;
+    top: 30px;
+    left: 10px;
+}
+
+.person-name{
+    color:black;
+    font-size: 19px;
+    text-decoration: none;
+}
+.person-name:hover{
+    text-decoration: underline;
+}
+
+.person-id{
+    position: absolute;
+    top: 22px;
+    left: 0px;
+    color: gray;
+    font-size: 12px;
+}
+
+.person-profile{
+    width:93%;
+    height:75px;
+//    background-color: red;
+}
+
+.person-profile p{
+    font-size: 13px;
+    overflow: hidden;        //文字を隠す
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;        //指定行末に…の表示機能
+}
+
+
 

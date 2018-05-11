@@ -7,7 +7,19 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @tweet_count = Tweet.where(user_id:@user.id).count
     @following_count = Follow.where(following_id:@user.id).count
+    @following_count -= 1
     @followed_count = Follow.where(followed_id:@user.id).count
+    @followed_count -= 1
+    @like_count = Like.where(userlike_id:@user.id).count
+  end
+  
+  def following
+    @user = User.find_by(id: params[:id])
+    @tweet_count = Tweet.where(user_id:@user.id).count
+    @following_count = Follow.where(following_id:@user.id).count
+    @following_count -= 1
+    @followed_count = Follow.where(followed_id:@user.id).count
+    @followed_count -= 1
     @like_count = Like.where(userlike_id:@user.id).count
   end
   
@@ -82,6 +94,7 @@ class UsersController < ApplicationController
   
   def logout
     session[:user_id]=nil
+    flash[:notice]="ログアウトしました"
     redirect_to("/login")
   end
   

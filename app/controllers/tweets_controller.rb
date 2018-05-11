@@ -3,8 +3,6 @@ class TweetsController < ApplicationController
   
   def timeline
     
-    
-    
   end
   
   def show

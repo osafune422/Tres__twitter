@@ -8,24 +8,22 @@
             <img src="<%= "/header/#{@user.header_name}" %>">
         </div>
         <div class="undericon">
-            <div class="icon_space">
-            
+            <div class="icon_space"></div>
+            <div class="header_icon move">
+                <i>ツイート<br></i>
+                <a><%= link_to(@tweet_count, "/mypage/#{@user.id}/#{@user.login_id}") %></a>
             </div>
             <div class="header_icon active">
-                <i>ツイート<br></i>
-                <a><b><%= @tweet_count %></b></a>
-            </div>
-            <div class="header_icon">
                 <i>フォロー<br></i>
-                <a><b><%= link_to(@following_count, "/following") %></b></a>
+                <a><%= @following_count %></a>
             </div>
-            <div class="header_icon">
+            <div class="header_icon move">
                 <i>フォロワー<br></i>
-                <a><b><%= @followed_count %></b></a>
+                <a><%= @followed_count %></a>
             </div>
-            <div class="header_icon">
+            <div class="header_icon move">
                 <i>いいね<br></i>
-                <a><b><%= @like_count %></b></a>
+                <a><%= @like_count %></a>
             </div>
         </div>
         
@@ -57,21 +55,24 @@
         
             <!-- 右カラム　開始 -->
             <div id="rightColumn_mypage">
-                <% @user.tweets.each do |tweet| %>
-                    <div class="posts-index-item">
-                        <div class="post-left">
-                            <img src="<%= "/icon/#{tweet.user.icon_name}" %>">
-                        </div>
-                        <div class="post-right">
-                            <div class="post-user-name">
-                                <a><%= link_to(tweet.user.name, "/mypage/#{tweet.user.id}/#{tweet.user.login_id}") %></a>
-                                <font size="2">@<%= @user.login_id %></font><br>
+                <% @user.followings.each do |following| %>
+                    <% if following.following_id != following.followed_id%>
+                        <div class="person">
+                            <div class="person-header">
+                                <img src="<%= "/header/#{following.followed_user.header_name}" %>">
                             </div>
-                            <div class="post-content">
-                                <a><%= link_to(tweet.content, "/show/#{tweet.id}") %></a>
+                            <div class="person-icon">
+                                <img src="<%= "/icon/#{following.followed_user.icon_name}" %>">
+                            </div>
+                            <div class="person-contents">
+                                <a class="person-name"><b><%= following.followed_user.name %></b></a>
+                                <a class="person-id">@<%= following.followed_user.login_id %></a><br>
+                                <div class="person-profile">
+                                    <p><%= following.followed_user.profile %></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <% end %>
                 <% end %>
             
             </div>
