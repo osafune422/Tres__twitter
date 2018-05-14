@@ -15,18 +15,18 @@
             <!-- 右カラム　開始 -->
             <div id="rightColumn">
                 
-                <% @current_user.self_tweets.each do |self_tweet| %>
+                <% @timelines.each do |timeline| %>
                     <div class="posts-index-item">
                         <div class="post-left">
-                            <img src="<%= "/icon/#{self_tweet.user.icon_name}" %>">
+                            <img src="<%= "/icon/#{timeline.user.icon_name}" %>">
                         </div>
                         <div class="post-right">
                             <div class="post-user-name">
-                                <a><%= link_to(self_tweet.user.name, "/mypage/#{self_tweet.user.id}/#{self_tweet.user.login_id}") %></a>
-                                <font size="2">@<%= self_tweet.user.login_id %></font><br>
+                                <a><%= link_to(timeline.user.name, "/mypage/#{timeline.user.id}/#{timeline.user.login_id}") %></a>
+                                <font size="2">@<%= timeline.user.login_id %></font><br>
                             </div>
                             <div class="post-content">
-                                <a><%= link_to(self_tweet.content, "/show/#{self_tweet.id}") %></a>
+                                <a><%= link_to(timeline.content, "/show/#{timeline.id}") %></a>
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,26 @@ class UsersController < ApplicationController
     @like_count = Like.where(userlike_id:@user.id).count
   end
   
+  def followed
+    @user = User.find_by(id: params[:id])
+    @tweet_count = Tweet.where(user_id:@user.id).count
+    @following_count = Follow.where(following_id:@user.id).count
+    @following_count -= 1
+    @followed_count = Follow.where(followed_id:@user.id).count
+    @followed_count -= 1
+    @like_count = Like.where(userlike_id:@user.id).count
+  end
+  
+  def mylike
+    @user = User.find_by(id: params[:id])
+    @tweet_count = Tweet.where(user_id:@user.id).count
+    @following_count = Follow.where(following_id:@user.id).count
+    @following_count -= 1
+    @followed_count = Follow.where(followed_id:@user.id).count
+    @followed_count -= 1
+    @like_count = Like.where(userlike_id:@user.id).count
+  end
+  
   def new
     @user = User.new
   end  
@@ -38,6 +58,10 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id]=@user.id
+      @follow = Follow.new()
+      @follow.following_id = @user.id
+      @follow.followed_id = @user.id
+      @follow.save
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/mypage/#{@user.id}/#{@user.login_id}")
     else

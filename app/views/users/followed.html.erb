@@ -13,13 +13,13 @@
                 <i>ツイート<br></i>
                 <a><%= link_to(@tweet_count, "/mypage/#{@user.id}/#{@user.login_id}") %></a>
             </div>
-            <div class="header_icon active">
-                <i>フォロー<br></i>
-                <a><%= @following_count %></a>
-            </div>
             <div class="header_icon move">
+                <i>フォロー<br></i>
+                <a><%= link_to(@following_count, "/following/#{@user.id}") %></a>
+            </div>
+            <div class="header_icon active">
                 <i>フォロワー<br></i>
-                <a><%= link_to(@followed_count, "/followed/#{@user.id}") %></a>
+                <a><%= @followed_count %></a>
             </div>
             <div class="header_icon move">
                 <i>いいね<br></i>
@@ -55,20 +55,20 @@
         
             <!-- 右カラム　開始 -->
             <div id="rightColumn_mypage">
-                <% @user.followings.each do |following| %>
-                    <% if following.following_id != following.followed_id%>
+                <% @user.followeds.each do |followed| %>
+                    <% if followed.followed_id != followed.following_id%>
                         <div class="person">
                             <div class="person-header">
-                                <img src="<%= "/header/#{following.followed_user.header_name}" %>">
+                                <img src="<%= "/header/#{followed.following_user.header_name}" %>">
                             </div>
                             <div class="person-icon">
-                                <img src="<%= "/icon/#{following.followed_user.icon_name}" %>">
+                                <img src="<%= "/icon/#{followed.following_user.icon_name}" %>">
                             </div>
                             <div class="person-contents">
-                                <a class="person-name" href="<%= "/mypage/#{following.followed_user.id}/#{following.followed_user.login_id}" %>"><b><%= following.followed_user.name %></b></a>
-                                <a class="person-id" href="<%= "/mypage/#{following.followed_user.id}/#{following.followed_user.login_id}" %>">@<%= following.followed_user.login_id %></a><br>
+                                <a class="person-name"  href="<%= "/mypage/#{following.followed_user.id}/#{following.followed_user.login_id}" %>"><b><%= followed.following_user.name %></b></a>
+                                <a class="person-id"  href="<%= "/mypage/#{following.followed_user.id}/#{following.followed_user.login_id}" %>">@<%= followed.following_user.login_id %></a><br>
                                 <div class="person-profile">
-                                    <p><%= following.followed_user.profile %></p>
+                                    <p><%= followed.following_user.profile %></p>
                                 </div>
                             </div>
                         </div>

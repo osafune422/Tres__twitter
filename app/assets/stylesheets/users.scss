@@ -99,12 +99,14 @@ div.display img{
 }
 
 .header_icon a{
+    position:relative;
+    z-index:2;
     font-size:18px;
     font-weight: 700;
 }
 
 .move a{
-    color:gray;
+    color: gray;
     text-decoration: none;
 }
 .move a:hover {
@@ -119,6 +121,14 @@ div.display img{
     width: 180px;
     height: 180px;
     border-radius: 50%;
+}
+
+.icon a{
+    color: black;
+    text-decoration: none;
+}
+.icon a:hover{
+    text-decoration: underline;
 }
 
 .link_profile{
@@ -271,6 +281,10 @@ textarea{
     left: 0px;
     color: gray;
     font-size: 12px;
+    text-decoration: none;
+}
+.person-id:hover{
+    text-decoration: underline;
 }
 
 .person-profile{

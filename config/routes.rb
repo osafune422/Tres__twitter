@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   post "follow/:user_id" => "follows#follow"
   post "follow/destroy/:user_id" => "follows#destroy"
-  get "following/:id" => "users#following"
-  get "followed/:id" => "follows#followed"
   
   post "like/:tweet_id" => "likes#like"
   post "like/destroy/:tweet_id" => "likes#destroy"
@@ -14,6 +12,9 @@ Rails.application.routes.draw do
   
   get 'tweets/timeline'
   get 'mypage/:id/:login_id', to:'users#mypage'
+  get 'following/:id', to:'users#following'
+  get 'followed/:id', to:'users#followed'
+  get 'likes/:id', to:'users#mylike'
   get 'signup', to:'users#new'
   post 'create', to: 'users#create'
   get 'edit/:id', to:'users#edit'

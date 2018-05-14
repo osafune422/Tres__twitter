@@ -13,13 +13,17 @@ class User < ApplicationRecord
         return @tweet.all.order("created_at DESC")
     end
     
-    def self_tweets
-        @tweet=Tweet.where(user_id: self.id) 
-        return @tweet.all.order("created_at DESC")
-    end
-    
     def followings
         @following = Follow.where(following_id: self.id)
         return @following.all.order("created_at DESC")
+    end
+    
+    def followeds
+        @followed = Follow.where(followed_id: self.id)
+        return @followed.all.order("created_at DESC")
+    end
+    
+    def likes
+        return Like.where(userlike_id: self.id)
     end
 end

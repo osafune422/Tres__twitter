@@ -13,19 +13,19 @@
             </div>
             <div class="header_icon active">
                 <i>ツイート<br></i>
-                <a><b><%= @tweet_count %></b></a>
+                <a><%= @tweet_count %></a>
             </div>
-            <div class="header_icon">
+            <div class="header_icon move">
                 <i>フォロー<br></i>
-                <a><b><%= link_to(@following_count, "/following") %></b></a>
+                <a><%= link_to(@following_count, "/following/#{@user.id}") %></a>
             </div>
-            <div class="header_icon">
+            <div class="header_icon move">
                 <i>フォロワー<br></i>
-                <a><b><%= @followed_count %></b></a>
+                <a><%= link_to(@followed_count, "/followed/#{@user.id}") %></a>
             </div>
-            <div class="header_icon">
+            <div class="header_icon move">
                 <i>いいね<br></i>
-                <a><b><%= @like_count %></b></a>
+                <a><%= link_to(@like_count, "/likes/#{@user.id}") %></a>
             </div>
         </div>
         
@@ -48,10 +48,10 @@
             <!-- 左カラム　開始 -->
             <div id="leftColumn_mypage" class="icon">
                 <img src="<%= "/icon/#{@user.icon_name}" %>"><br>
-                <font size="5"><b><%= @user.name %></b></font><br>
-                <font size="2">@<%= @user.login_id %></font><br>
+                <a><font size="5"><b><%= link_to(@user.name,"/mypage/#{@user.id}/#{@user.login_id}") %></b></font></a><br>
+                <font size="2">@<a><%= link_to(@user.login_id,"/mypage/#{@user.id}/#{@user.login_id}") %></a></font><br>
                 <font size="2"><%= @user.profile %></font><br>
-                <font size="2"><%= createuser_time(@user[:created_at]) %></font>
+                <font size="2" color="gray"><%= createuser_time(@user[:created_at]) %></font>
             </div>
             <!-- 左カラム　終了 -->
         
@@ -65,7 +65,7 @@
                         <div class="post-right">
                             <div class="post-user-name">
                                 <a><%= link_to(tweet.user.name, "/mypage/#{tweet.user.id}/#{tweet.user.login_id}") %></a>
-                                <font size="2">@<%= @user.login_id %></font><br>
+                                <font size="2">@<%= tweet.user.login_id %></font><br>
                             </div>
                             <div class="post-content">
                                 <a><%= link_to(tweet.content, "/show/#{tweet.id}") %></a>
