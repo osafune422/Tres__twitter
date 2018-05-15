@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def mypage
     @user = User.find_by(id: params[:id])
-    @tweet_count = Tweet.where(user_id:@user.id).count
+    @tweet_count = @user.tweets.count
     @following_count = Follow.where(following_id:@user.id).count
     @following_count -= 1
     @followed_count = Follow.where(followed_id:@user.id).count
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   
   def following
     @user = User.find_by(id: params[:id])
-    @tweet_count = Tweet.where(user_id:@user.id).count
+    @tweet_count = @user.tweets.count
     @following_count = Follow.where(following_id:@user.id).count
     @following_count -= 1
     @followed_count = Follow.where(followed_id:@user.id).count
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   
   def followed
     @user = User.find_by(id: params[:id])
-    @tweet_count = Tweet.where(user_id:@user.id).count
+    @tweet_count = @user.tweets.count
     @following_count = Follow.where(following_id:@user.id).count
     @following_count -= 1
     @followed_count = Follow.where(followed_id:@user.id).count
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   
   def mylike
     @user = User.find_by(id: params[:id])
-    @tweet_count = Tweet.where(user_id:@user.id).count
+    @tweet_count = @user.tweets.count
     @following_count = Follow.where(following_id:@user.id).count
     @following_count -= 1
     @followed_count = Follow.where(followed_id:@user.id).count

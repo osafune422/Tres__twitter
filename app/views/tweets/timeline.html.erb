@@ -5,32 +5,62 @@
             
             
             <!-- 左カラム　開始 -->
-            <div id="leftColumn_timeline" class="icon_show">
-                <img src="<%= "/icon/#{@current_user.icon_name}" %>">
-                <b><%= link_to(@current_user.name, "/mypage/#{@current_user.id}/#{@current_user.login_id}") %></b><br>
-                <font size="2">@<%= @current_user.login_id %></font><br>
+            <div id="leftColumn" >
+                <div class="TLperson">
+                    <div class="TLperson-header">
+                        <img src="<%= "/header/#{@current_user.header_name}" %>">
+                    </div>
+                    <div class="TLperson-icon">
+                        <img src="<%= "/icon/#{@current_user.icon_name}" %>">
+                    </div>
+                    <div class="TLperson-contents">
+                        <a class="person-name" href="<%= "/mypage/#{@current_user.id}/#{@current_user.login_id}" %>"><b><%= @current_user.name %></b></a>
+                        <a class="person-id" href="<%= "/mypage/#{@current_user.id}/#{@current_user.login_id}" %>">@<%= @current_user.login_id %></a><br>
+                        
+                        <div class="TLperson-data">
+                            <div class="TLperson-link">
+                            <a><%= link_to("ツイート", "/mypage/#{@current_user.id}/#{@current_user.login_id}") %><br></a>
+                            <i><%= @tweet_count %></i>
+                        </div>
+                        <div class="TLperson-link">
+                            <a><%= link_to("フォロー", "/following/#{@current_user.id}") %><br></a>
+                            <i><%= @following_count %></i>
+                        </div>
+                        <div class="TLperson-link">
+                            <a><%= link_to("フォロワー", "/followed/#{@current_user.id}") %><br></a>
+                            <i><%= @followed_count %></i>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
             </div>
             <!-- 左カラム　終了 -->
         
             <!-- 右カラム　開始 -->
             <div id="rightColumn">
-                
-                <% @timelines.each do |timeline| %>
-                    <div class="posts-index-item">
-                        <div class="post-left">
-                            <img src="<%= "/icon/#{timeline.user.icon_name}" %>">
-                        </div>
-                        <div class="post-right">
-                            <div class="post-user-name">
-                                <a><%= link_to(timeline.user.name, "/mypage/#{timeline.user.id}/#{timeline.user.login_id}") %></a>
-                                <font size="2">@<%= timeline.user.login_id %></font><br>
+                <% @current_user.followings.each do |following| %>
+                    <% following.followed_user.tweets.each do |tweet| %>
+                        <div class="posts-index-item">
+                            <div class="post-left">
+                                <img src="<%= "/icon/#{tweet.user.icon_name}" %>">
                             </div>
-                            <div class="post-content">
-                                <a><%= link_to(timeline.content, "/show/#{timeline.id}") %></a>
+                            <div class="post-right">
+                                <div class="post-user-name">
+                                    <a><%= link_to(tweet.user.name, "/mypage/#{tweet.user.id}/#{tweet.user.login_id}") %></a>
+                                    <font size="2">@<%= tweet.user.login_id %></font><br>
+                                </div>
+                                <div class="post-content">
+                                    <a><%= link_to(tweet.content, "/show/#{tweet.id}") %></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <% end %>
                 <% end %>
+                
             </div>
             <!-- 右カラム　終了 -->
             

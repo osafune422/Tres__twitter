@@ -31,16 +31,87 @@
 
 
 /* timeline */
-/* 左カラム */
-#leftColumn_timeline {
-    position:relative;
+.TLperson{
     float:left;
-    top:10px;
-    width:230px;
-    height:100px;
-    background:white;
-    text-align: justify;
-    text-justify: distribute-all-lines;
+    width: 100%;
+    height: 220px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color:white;
 }
 
+.TLperson-header img{
+    width: 100%;
+    height: 85px;
+}
 
+.TLperson-icon img{
+    position: absolute;
+    top: 50px;
+    margin-left: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: solid 3px white;
+}
+
+.TLperson-contents{
+    position:relative;
+    top: 30px;
+    left: 10px;
+//    background-color: red;
+}
+
+.TLperson-name{
+    color:black;
+    font-size: 19px;
+    text-decoration: none;
+}
+.TLperson-name:hover{
+    text-decoration: underline;
+}
+
+.TLperson-id{
+//    position: absolute;
+//    top: 22px;
+    left: 0px;
+    color: gray;
+    font-size: 12px;
+    text-decoration: none;
+}
+.TLperson-id:hover{
+    text-decoration: underline;
+}
+
+.TLperson-data{
+    position: absolute;
+    top:40px;
+    width:93%;
+    height:50px;
+//    background-color: red;
+//    vertical-align:middle;
+    display: flex;
+	align-items: center;
+}
+
+.TLperson-link{
+    padding: 5px 10px;
+    text-align:center;
+}
+
+.TLperson-link i{
+    font-size:18px;
+    font-weight: 700;
+    color:#3ecdc6;
+}
+
+.TLperson-link a{
+    position:relative;
+    z-index:2;
+    font-size:11px;
+    color: gray;
+    text-decoration: none;
+}
+.TLperson-link a:hover {
+    color:#3ecdc6;
+}

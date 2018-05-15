@@ -121,6 +121,7 @@ div.display img{
     width: 180px;
     height: 180px;
     border-radius: 50%;
+    border: solid 5px white;
 }
 
 .icon a{
@@ -142,6 +143,20 @@ div.display img{
     border: solid 1px #808080;
 }
 .link_profile:hover{
+    background:ghostwhite;
+}
+
+.link_profile_post{
+    position:relative;
+    font-size: 17px;
+    top:507px;
+    background: white;
+    color:gray;
+    padding:5px 10px;/*内側の余白*/
+    border-radius: 20px;
+    border: solid 1px #808080;
+}
+.link_profile_post:hover{
     background:ghostwhite;
 }
 

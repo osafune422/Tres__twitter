@@ -18,7 +18,7 @@
         <div class="app_header">
           <div class="app_header_left">
             <div class="app_header_icon">
-              <a><span class="fa fa-home"></span>ホーム</a>
+              <a href="/timeline"><span class="fa fa-home"></span>ホーム</a>
             </div>
           </div>
           <div class="app_header_right">
@@ -39,7 +39,7 @@
 
   <body>
     <% if flash[:notice] %>
-      <div class="flash">
+      <div id="notice" class="flash">
         <%= flash[:notice] %>
       </div>
     <% end %>
@@ -48,9 +48,9 @@
   </body>
   
   <script>
-    let x = document.getElementById('notice')
-    noticeElement.classList.add('fadeOut');
-    noticeElement.addEventListener('animationend', function() {
+    let x = document.getElementById('notice');
+    x.classList.add('fadeOut');
+    x.addEventListener('animationend', function() {
       this.classList.add('ended');
     });
   

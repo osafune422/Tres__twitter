@@ -92,24 +92,21 @@ body{
     font-size: 14px;
 }
 
-/*.show{
-*    visibility: visible;
-*    animation-name: fadeOut;
-*  animation-duration: 1s;
-*  animation-timing-function: ease;
-*}
-*/
-
 @keyframes fadeOut {
     0%{
 		opacity: 1;
 	}
-	75%{
-		opacity: 0.5;
-	}
 	100% {
 		opacity: 0;
 	}
+}
+.fadeOut {
+	animation: fadeOut 3s ease;
+	animation-delay: 3s;
+	animation-duration: 1s;
+}
+.fadeOut.ended {
+	display: none;
 }
 
 .button_tweet{

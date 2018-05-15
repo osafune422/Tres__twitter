@@ -2,13 +2,17 @@ class TweetsController < ApplicationController
   before_action :ensure_correct_user, {only:[:destroy_tweet]}      #ユーザーのidが異なる時
   
   def timeline
-    
+    @tweet_count = @current_user.tweets.count
+    @following_count = Follow.where(following_id:@current_user.id).count
+    @following_count -= 1
+    @followed_count = Follow.where(followed_id:@current_user.id).count
+    @followed_count -= 1
   end
   
   def show
     @tweet = Tweet.find_by(id: params[:id])
     @user = @tweet.user
-    @likes_count = Like.where(tweet_id:@tweet.id).count
+    @likes_count = @tweet.likes.count
   end
   
   def new_tweet

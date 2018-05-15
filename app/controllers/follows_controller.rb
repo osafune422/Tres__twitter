@@ -1,25 +1,23 @@
 class FollowsController < ApplicationController
     def follow
+        @nowuser=User.find_by(params[:user_id])
         @follow = Follow.new(
             following_id: @current_user.id,
             followed_id: params[:user_id]
             )
         @follow.save
-        @user=User.find_by(params[:user_id])
-        redirect_to("/mypage/#{params[:user_id]}/#{@user.login_id}")
+        redirect_to("/mypage/#{params[:user_id]}/#{@nowuser.login_id}")
     end
     
     def destroy
+        @nowuser=User.find_by(params[:user_id])
         @follow = Follow.find_by(
             following_id: @current_user.id,
             followed_id: params[:user_id]
             )
         @follow.destroy
-        @user=User.find_by(params[:user_id])
-        redirect_to("/mypage/#{params[:user_id]}/#{@user.login_id}")
+        redirect_to("/mypage/#{params[:user_id]}/#{@nowuser.login_id}")
     end
-    
-    
     
     def followed
         @user = User.find_by(id: params[:id])

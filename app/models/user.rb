@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :tweets, -> { order(created_at: :desc) }
     
     # nameのエラー条件
     validates :name, {presence: true}
@@ -7,11 +8,6 @@ class User < ApplicationRecord
     validates :login_id, {presence: true, uniqueness: true}
     # profileのエラー条件
     validates :profile, {length: {maximum: 140}}
-    
-    def tweets
-        @tweet=Tweet.where(user_id: self.id)
-        return @tweet.all.order("created_at DESC")
-    end
     
     def followings
         @following = Follow.where(following_id: self.id)

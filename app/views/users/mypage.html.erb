@@ -36,11 +36,11 @@
             <% else %>
                 <% if Follow.find_by(following_id: @current_user.id, followed_id: @user.id) %>
                     <%= link_to("/follow/destroy/#{@user.id}", {method: "post"}) do %>
-                        <a class="link_profile">フォロー解除</a>
+                        <button class="link_profile_post">フォロー解除</button>
                     <% end %>
                 <% else %>    
                     <%= link_to("/follow/#{@user.id}",{method: "post"}) do %>
-                        <a class="link_profile">フォローする</a>
+                        <button class="link_profile_post">フォローする</button>
                     <% end %>
                 <% end %>
             <% end %>
